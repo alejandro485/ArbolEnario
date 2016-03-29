@@ -103,7 +103,7 @@ public class Vista extends JFrame implements ActionListener{
 			canvas.setCabeza(arbol.raiz);
 		}
 		if(e.getActionCommand().equals("cs")){
-			//canvas.pintarCursor();
+			canvas.pintarCursor();
 		}
 	}
 }

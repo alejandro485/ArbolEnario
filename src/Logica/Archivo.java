@@ -11,11 +11,7 @@ public class Archivo {
 		try {
 			a = new RandomAccessFile(file, "rw");
 			if (a.length() > 0) {
-				int b = a.readInt();
-				if (b > 0)
-					exists = true;
-				else
-					exists = false;
+				exists = true;
 			} else {
 				for (int i = 1; i < 3; i++) {
 					a.writeInt(0);
@@ -25,6 +21,8 @@ public class Archivo {
 				a.writeInt(0);
 				a.writeInt(0);
 				a.writeInt(0);
+				a.seek(0);
+				a.writeInt(1);
 				exists = false;
 			}
 			a.close();
@@ -116,8 +114,8 @@ public class Archivo {
 	public Nodo recrearArbol() throws Exception {
 		a = new RandomAccessFile(file, "rw");
 		int b = a.readInt();
-		Nodo n = reconstruir(b);
 		a.close();
+		Nodo n = reconstruir(b);
 		return n;
 	}
 
@@ -125,10 +123,10 @@ public class Archivo {
 		int i = 0, j = 0;
 		Nodo n = null;
 		try {
+			a = new RandomAccessFile(file, "rw");
 			a.seek(12 * poc);
 			i = a.readInt();
 			n = new Nodo((char)i);
-			i = a.readInt();
 			n.num_p = poc;
 			i = a.readInt();
 			j = a.readInt();
