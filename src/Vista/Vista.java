@@ -22,6 +22,7 @@ public class Vista extends JFrame implements ActionListener{
 	private JButton btnAgregar;
 	private JButton btnBuscar;
 	private JButton btnPintar;
+	private JButton btnCursor;
 	private JTextField txtPalabra;
 	private CanvasArbol canvas;
 	
@@ -65,18 +66,24 @@ public class Vista extends JFrame implements ActionListener{
 		contentPane.add(btnBuscar);
 		
 		btnPintar = new JButton("Pintar");
-		btnPintar.setBounds(690, 12, 117,25);
+		btnPintar.setBounds(680, 12, 117,25);
 		btnPintar.setActionCommand("pt");
 		btnPintar.addActionListener(this);
 		contentPane.add(btnPintar);
+		
+		btnCursor=new JButton("Cursor");
+		btnCursor.setBounds(810,12,117,25);
+		btnCursor.setActionCommand("cs");
+		btnCursor.addActionListener(this);
+		contentPane.add(btnCursor);
 		
 		canvas=new CanvasArbol();
 		canvas.setBounds(12,40,1000,600);
 		canvas.setVisible(true);
 		contentPane.add(canvas);
-		canvas.repaint();
 		
 		arbol=new ArbolEnario();
+		canvas.setCabeza(arbol.raiz);
 		
 		JLabel lblPalabra = new JLabel("Palabra");
 		lblPalabra.setBounds(12, 17, 70, 15);
@@ -87,16 +94,16 @@ public class Vista extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("ag")){
 			arbol.agregarPalabra(txtPalabra.getText());
-			canvas.setCabeza(arbol.raiz,1);
+			canvas.setCabeza(arbol.raiz);
 		}
 		if(e.getActionCommand().equals("bs")){
 			
 		}
 		if(e.getActionCommand().equals("pt")){
-			canvas.setCabeza(arbol.raiz,1);
+			canvas.setCabeza(arbol.raiz);
 		}
 		if(e.getActionCommand().equals("cs")){
-			canvas.setCabeza(arbol.raiz,2);
+			//canvas.pintarCursor();
 		}
 	}
 }

@@ -18,11 +18,13 @@ public class CanvasArbol extends Canvas {
 	private int desp;
 	private String inOrden;
 
-	private int opcion;
-
-	public void setCabeza(Nodo c, int op) {
-		opcion = op;
+	public void setCabeza(Nodo c) {
 		cabeza = c;
+		repaint();
+	}
+	
+	public void pintarCursor(){
+		cabeza=null;
 		repaint();
 	}
 
@@ -33,16 +35,14 @@ public class CanvasArbol extends Canvas {
 		graficas.setColor(Color.black);
 		graficas.fillRect(0, 0, this.getWidth(), this.getHeight());
 		if (cabeza != null) {
-			if (opcion == 1) {
-				desp = 0;
-				difX = this.getWidth() / 40;
-				difY = this.getHeight() / 20;
-				inOrden = "";
-				pintarArbolInOrden(cabeza, 40, 40, 40, 40, g);
-			}
-			if(opcion==2){
-				
-			}
+			desp = 0;
+			difX = this.getWidth() / 40;
+			difY = this.getHeight() / 20;
+			inOrden = "";
+			pintarArbolInOrden(cabeza, 40, 40, 40, 40, g);
+		}
+		else{
+			
 		}
 		g.drawImage(imagen, 0, 0, this);
 	}
