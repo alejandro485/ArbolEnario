@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -96,8 +97,14 @@ public class Vista extends JFrame implements ActionListener{
 			arbol.agregarPalabra(txtPalabra.getText());
 			canvas.setCabeza(arbol.raiz);
 		}
-		if(e.getActionCommand().equals("bs")){
-			
+		if(e.getActionCommand().equals("br")){
+			if(arbol.buscarPalabra(txtPalabra.getText())){
+				canvas.buscarPalabra(arbol.raiz);
+			}
+			else{
+				JOptionPane.showConfirmDialog(null, "No se encontro palabra");
+				canvas.setCabeza(arbol.raiz);
+			}
 		}
 		if(e.getActionCommand().equals("pt")){
 			canvas.setCabeza(arbol.raiz);

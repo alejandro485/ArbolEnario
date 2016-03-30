@@ -61,7 +61,6 @@ public class Archivo {
 			if (i == 0) {
 				i = aumentarArchivo();
 			}
-			System.out.println(i+" : v");
 			a.seek((i *12) + 8);
 			j = a.readInt();
 			a.seek(8);

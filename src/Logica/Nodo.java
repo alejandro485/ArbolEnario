@@ -5,6 +5,7 @@ public class Nodo {
 	public char caracter;
 	// para la busqueda de palabra
 	public boolean inPalabra;
+	public boolean conPalabra;
 	
 	public Nodo hermano;
 	public Nodo hijo;

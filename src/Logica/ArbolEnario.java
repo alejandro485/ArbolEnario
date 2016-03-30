@@ -74,12 +74,12 @@ public class ArbolEnario {
 				p.num_p=archivo.siguienteLibre();
 				r.hermano = p;
 				archivo.modificarNodo(p);
-				archivo.modificarNodo(r);
+				archivo.modificarNodo(r);/*
 				o=new Nodo(FINP);
 				o.num_p=archivo.siguienteLibre();
 				archivo.modificarNodo(o);
 				p.hermano = o;
-				archivo.modificarNodo(p);
+				archivo.modificarNodo(p);*/
 				q = p;
 				for (int j = i + 1; j < palabra.length; j++) {
 					p = new Nodo(palabra[j]);
@@ -107,4 +107,32 @@ public class ArbolEnario {
 		}
 	}
 
+	public boolean buscarPalabra(String p){
+		p+="}";
+		raiz.conPalabra=true;
+		raiz.inPalabra=true;
+		raiz.hijo.conPalabra=true;
+		raiz.hijo.inPalabra=false;
+		char[] palabra=p.toCharArray();
+		Nodo q=raiz.hijo;
+		for(int i=0; i<palabra.length;i++){
+			while(q!=null){
+				if(q.caracter==palabra[i]){
+					q.conPalabra=true;
+					q.inPalabra=true;
+					q=q.hijo;
+					break;
+				}
+				else{
+					q.conPalabra=true;
+					q.inPalabra=false;
+					q=q.hermano;
+				}
+			}
+			if(q==null && palabra[i]!='}')
+				return false;
+		}
+		return true;
+	}
+	
 }
